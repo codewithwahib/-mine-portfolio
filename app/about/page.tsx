@@ -4,21 +4,23 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 
 export default function About() {
-  // Animation settings for reusable "fade-up" effect
+  // Fixed: Added "as const" to the ease property to resolve TypeScript build errors
   const fadeInVariant = {
     hidden: { opacity: 0, y: 30 },
     visible: { 
       opacity: 1, 
       y: 0, 
-      transition: { duration: 0.8, ease: "easeOut" } 
+      transition: { 
+        duration: 0.8, 
+        ease: "easeOut" as const 
+      } 
     }
   };
 
   return (
-    /* GRADIENT BACKGROUND ADDED HERE */
     <div className="min-h-screen bg-gradient-to-b from-black via-black to-[#0a192f] text-white selection:bg-blue-500 selection:text-white font-sans">
 
-      {/* Navbar - Added background blur and consistent border */}
+      {/* Navbar */}
       <header className="flex flex-col md:flex-row md:justify-between md:items-center px-4 py-4 md:px-10 md:py-6 border-b border-blue-500/30 bg-black/80 backdrop-blur-md fixed top-0 left-0 w-full z-50 gap-4">
         <h1 className="text-xl md:text-2xl font-extrabold tracking-tighter text-blue-500 text-center md:text-left">
           WAHIB PORTFOLIO
@@ -27,8 +29,8 @@ export default function About() {
           <Link href="/" className="hover:text-blue-400 transition-colors uppercase tracking-[0.2em]">Home</Link>
           <Link href="/about" className="text-blue-400 uppercase tracking-[0.2em]">About</Link>
           <Link href="/education" className="hover:text-blue-400 transition-colors uppercase tracking-[0.2em]">Education</Link>
+          <Link href="/projects" className="hover:text-blue-400 transition-colors uppercase tracking-[0.2em]">Projects</Link>
           <Link href="/contact" className="hover:text-blue-400 transition-colors uppercase tracking-[0.2em]">Contact</Link>
-           <Link href="/projects" className="hover:text-blue-400 transition-colors uppercase tracking-[0.2em]">Projects</Link>
         </nav>
       </header>
 
@@ -176,7 +178,7 @@ export default function About() {
             </p>
           </motion.section>
 
-          {/* VISION BOX - Updated background for consistency */}
+          {/* VISION BOX */}
           <motion.div 
             initial="hidden"
             whileInView="visible"
@@ -193,7 +195,7 @@ export default function About() {
         </div>
       </main>
 
-      {/* Footer - Updated background */}
+      {/* Footer */}
       <footer className="text-center p-10 border-t border-blue-500/10 text-gray-600 bg-black/50">
         <p className="text-xs tracking-widest uppercase">
           © 2026 WAHIB PORTFOLIO • ALL RIGHTS RESERVED
