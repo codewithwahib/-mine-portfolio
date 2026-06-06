@@ -33,7 +33,8 @@ export default function Projects() {
       opacity: 1, 
       scale: 1,
       y: 0, 
-      transition: { duration: 0.5, ease: "easeOut" } 
+      // Fixed: Added 'as const' literal type assertion for Framer Motion / TS stability
+      transition: { duration: 0.5, ease: "easeOut" as const } 
     },
   };
 
@@ -99,6 +100,7 @@ export default function Projects() {
   return (
     <div className="min-h-screen bg-gradient-to-b from-black via-black to-[#0a192f] text-white selection:bg-blue-500 font-sans">
       
+      {/* Header / Navbar */}
       <header className="flex flex-col md:flex-row md:justify-between md:items-center px-4 py-4 md:px-10 md:py-6 border-b border-blue-500/30 bg-black/80 backdrop-blur-md fixed top-0 left-0 w-full z-50 gap-4">
         <h1 className="text-xl md:text-2xl font-extrabold tracking-tighter text-blue-500 text-center md:text-left">
           WAHIB PORTFOLIO
@@ -112,7 +114,9 @@ export default function Projects() {
         </nav>
       </header>
 
-      <main className="pt-40 pb-20 px-6">
+      {/* Main Container */}
+      {/* Fixed: Shifted mobile top padding to pt-56 to protect title layout from fixed navbar clipping */}
+      <main className="pt-56 md:pt-40 pb-20 px-6">
         <section className="max-w-6xl mx-auto">
           <motion.div 
             initial={{ opacity: 0, y: -20 }}
@@ -124,7 +128,7 @@ export default function Projects() {
             </h2>
             <div className="h-1 w-20 bg-blue-500 mx-auto mt-4 rounded-full"></div>
             <p className="text-gray-400 mt-6 max-w-xl mx-auto text-sm md:text-base italic">
-              "Transforming complex ideas into digital reality."
+              &ldquo;Transforming complex ideas into digital reality.&rdquo;
             </p>
           </motion.div>
 
@@ -134,12 +138,12 @@ export default function Projects() {
             animate="visible"
             className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
           >
-            {projectsData.map((project, index) => (
+            {projectsData.map((project) => (
               <motion.div
-                key={index}
+                key={project.title} // Fixed: Swapped fallback map index loop key with unique string identities
                 variants={itemVariants}
                 whileHover={{ y: -10 }}
-                className="group relative p-8 border border-blue-500/20 rounded-3xl bg-gray-900/40 backdrop-blur-md hover:border-blue-500/50 transition-all duration-300 shadow-xl shadow-blue-900/5"
+                className="group relative flex flex-col p-8 border border-blue-500/20 rounded-3xl bg-gray-900/40 backdrop-blur-md hover:border-blue-500/50 transition-all duration-300 shadow-xl shadow-blue-900/5"
               >
                 <div className="mb-6 flex justify-between items-start">
                   <div className="p-3 bg-blue-500/10 rounded-2xl group-hover:bg-blue-500/20 transition-colors">
@@ -163,6 +167,7 @@ export default function Projects() {
                   {project.description}
                 </p>
 
+                {/* Fixed: Wrapped tags structure in flex-grow container so footer elements stay perfectly aligned across cards */}
                 <div className="flex flex-wrap gap-2 mt-auto">
                   {project.tech.map((t, i) => (
                     <span key={i} className="text-[10px] font-bold uppercase tracking-widest px-3 py-1 bg-blue-500/5 border border-blue-500/20 rounded-full text-blue-400">
@@ -176,6 +181,7 @@ export default function Projects() {
         </section>
       </main>
 
+      {/* Footer */}
       <footer className="text-center p-10 border-t border-blue-500/10 text-gray-600 bg-black/50">
         <p className="text-xs tracking-widest uppercase">
           © 2026 WAHIB PORTFOLIO • ALL RIGHTS RESERVED

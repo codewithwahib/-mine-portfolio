@@ -1,10 +1,11 @@
 "use client"; // Required for Framer Motion animations
 
 import Link from "next/link";
+import Image from "next/image";
 import { motion } from "framer-motion";
 
 export default function About() {
-  // Fixed: Added "as const" to the ease property to resolve TypeScript build errors
+  // Solved: Ease configured with literal typing to satisfy Framer Motion / TS
   const fadeInVariant = {
     hidden: { opacity: 0, y: 30 },
     visible: { 
@@ -34,7 +35,7 @@ export default function About() {
         </nav>
       </header>
 
-      <main className="pt-40 pb-20 overflow-hidden">
+      <main className="pt-56 md:pt-40 pb-20 overflow-hidden">
         
         {/* HERO SECTION */}
         <motion.section 
@@ -87,8 +88,8 @@ export default function About() {
               </p>
             </div>
             <div className="flex-shrink-0">
-              <div className="w-40 h-40 bg-gray-900/40 backdrop-blur-sm border border-blue-500/30 rounded-2xl flex items-center justify-center p-4">
-                <img src="/bass-logo.png" alt="BASS Logo" className="max-w-full max-h-full object-contain" />
+              <div className="w-40 h-40 bg-gray-900/40 backdrop-blur-sm border border-blue-500/30 rounded-2xl flex items-center justify-center p-4 relative">
+                <Image src="/bass-logo.png" alt="BASS Logo" width={160} height={160} className="max-w-full max-h-full object-contain" />
               </div>
             </div>
           </motion.section>
@@ -101,17 +102,17 @@ export default function About() {
             variants={fadeInVariant}
             className="flex flex-col md:flex-row-reverse items-center gap-8 md:gap-12"
           >
-            <div className="flex-1 space-y-4">
-              <h3 className="text-xl font-bold text-blue-400 uppercase tracking-widest border-b border-blue-500/20 pb-2 text-right">
+            <div className="flex-1 space-y-4 text-center md:text-right">
+              <h3 className="text-xl font-bold text-blue-400 uppercase tracking-widest border-b border-blue-500/20 pb-2">
                 Creative Expertise
               </h3>
-              <p className="text-lg md:text-xl text-gray-300 leading-relaxed text-right">
+              <p className="text-lg md:text-xl text-gray-300 leading-relaxed">
                 I completed a <span className="text-white font-bold">1-year Graphic Designing course</span> at <span className="text-white font-bold">Saylani Mass IT Training (SMIT)</span>. This certification empowered me with a deep understanding of visual communication and branding.
               </p>
             </div>
             <div className="flex-shrink-0">
-              <div className="w-40 h-40 bg-gray-900/40 backdrop-blur-sm border border-blue-500/30 rounded-2xl flex items-center justify-center p-4">
-                <img src="/smit-logo.png" alt="SMIT Logo" className="max-w-full max-h-full object-contain" />
+              <div className="w-40 h-40 bg-gray-900/40 backdrop-blur-sm border border-blue-500/30 rounded-2xl flex items-center justify-center p-4 relative">
+                <Image src="/smit-logo.png" alt="SMIT Logo" width={160} height={160} className="max-w-full max-h-full object-contain" />
               </div>
             </div>
           </motion.section>
@@ -133,8 +134,8 @@ export default function About() {
               </p>
             </div>
             <div className="flex-shrink-0">
-              <div className="w-40 h-40 bg-gray-900/40 backdrop-blur-sm border border-blue-500/30 rounded-2xl flex items-center justify-center p-4">
-                <img src="/speciss-logo.png" alt="Speciss Logo" className="max-w-full max-h-full object-contain" />
+              <div className="w-40 h-40 bg-gray-900/40 backdrop-blur-sm border border-blue-500/30 rounded-2xl flex items-center justify-center p-4 relative">
+                <Image src="/speciss-logo.png" alt="Speciss Logo" width={160} height={160} className="max-w-full max-h-full object-contain" />
               </div>
             </div>
           </motion.section>
@@ -147,7 +148,7 @@ export default function About() {
             variants={fadeInVariant}
             className="flex flex-col md:flex-row-reverse items-center gap-8 md:gap-12"
           >
-            <div className="flex-1 space-y-4 text-right">
+            <div className="flex-1 space-y-4 text-center md:text-right">
               <h3 className="text-xl font-bold text-blue-400 uppercase tracking-widest border-b border-blue-500/20 pb-2">
                 Advanced Specialization
               </h3>
@@ -156,8 +157,8 @@ export default function About() {
               </p>
             </div>
             <div className="flex-shrink-0">
-              <div className="w-40 h-40 bg-gray-900/40 backdrop-blur-sm border border-blue-500/30 rounded-2xl flex items-center justify-center p-4">
-                <img src="/giaic-logo.png" alt="GIAIC Logo" className="max-w-full max-h-full object-contain" />
+              <div className="w-40 h-40 bg-gray-900/40 backdrop-blur-sm border border-blue-500/30 rounded-2xl flex items-center justify-center p-4 relative">
+                <Image src="/giaic-logo.png" alt="GIAIC Logo" width={160} height={160} className="max-w-full max-h-full object-contain" />
               </div>
             </div>
           </motion.section>
@@ -188,7 +189,7 @@ export default function About() {
           >
             <h3 className="text-xl font-bold text-white uppercase mb-4">The Vision</h3>
             <p className="text-gray-400 italic leading-relaxed">
-              "To transform abstract ideas into scalable digital products, bridging the gap between human imagination and machine execution."
+              &ldquo;To transform abstract ideas into scalable digital products, bridging the gap between human imagination and machine execution.&rdquo;
             </p>
           </motion.div>
 
